@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_7" inherit-compiler-output="false">
+    <output url="file://$MODULE_DIR$/target/classes" />
+    <output-test url="file://$MODULE_DIR$/target/test-classes" />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/src/main/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/test/java" isTestSource="true" />
+      <excludeFolder url="file://$MODULE_DIR$/target" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module" module-name="hu.bme.mit.trainbenchmark.ttc.benchmark.emfincquery.patterns" />
+    <orderEntry type="library" name="Maven: log4j:log4j:1.2.17" level="project" />
+    <orderEntry type="library" name="Maven: org.eclipse.incquery:incquery-runtime:1.1.0" level="project" />
+    <orderEntry type="library" name="Maven: org.eclipse.incquery:org.eclipse.incquery.runtime:1.1.0" level="project" />
+    <orderEntry type="library" name="Maven: org.eclipse.incquery:org.eclipse.incquery.runtime.rete:1.1.0" level="project" />
+    <orderEntry type="library" name="Maven: org.eclipse.incquery:org.eclipse.incquery.runtime.rete.recipes:1.1.0" level="project" />
+    <orderEntry type="library" name="Maven: org.eclipse.incquery:org.eclipse.incquery.runtime.matchers:1.1.0" level="project" />
+    <orderEntry type="library" name="Maven: org.eclipse.incquery:org.eclipse.incquery.runtime.base:1.1.0" level="project" />
+    <orderEntry type="library" name="Maven: org.eclipse.incquery:org.eclipse.incquery.runtime.base.itc:1.1.0" level="project" />
+    <orderEntry type="library" name="Maven: org.eclipse.incquery:org.eclipse.incquery.runtime.evm:1.1.0" level="project" />
+    <orderEntry type="library" name="Maven: org.eclipse.incquery:org.eclipse.incquery.runtime.localsearch:1.1.0" level="project" />
+    <orderEntry type="module" module-name="hu.bme.mit.trainbenchmark.ttc.benchmark" />
+    <orderEntry type="library" name="Maven: commons-cli:commons-cli:1.2" level="project" />
+    <orderEntry type="library" name="Maven: junit:junit:4.12" level="project" />
+    <orderEntry type="library" name="Maven: org.hamcrest:hamcrest-core:1.3" level="project" />
+    <orderEntry type="module" module-name="hu.bme.mit.trainbenchmark.ttc.emf" />
+    <orderEntry type="module" module-name="hu.bme.mit.trainbenchmark.ttc.emf.model" />
+    <orderEntry type="library" name="Maven: org.eclipse.emf:org.eclipse.emf.common:2.9.1.v20130827-0309" level="project" />
+    <orderEntry type="library" name="Maven: org.eclipse.emf:org.eclipse.emf.ecore.xmi:2.9.1.v20130827-0309" level="project" />
+    <orderEntry type="library" name="Maven: org.eclipse.emf:org.eclipse.emf.ecore:2.9.1.v20130827-0309" level="project" />
+    <orderEntry type="library" name="Maven: org.eclipse.xtext:org.eclipse.xtext.xbase.lib:2.8.2" level="project" />
+    <orderEntry type="library" name="Maven: com.google.guava:guava:14.0.1" level="project" />
+    <orderEntry type="library" name="Maven: org.eclipse.viatra:viatra-emf-runtime:0.8.0-SNAPSHOT" level="project" />
+  </component>
+</module>
