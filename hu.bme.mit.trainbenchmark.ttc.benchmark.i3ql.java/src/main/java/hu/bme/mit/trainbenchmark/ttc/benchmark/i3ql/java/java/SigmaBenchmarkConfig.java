@@ -10,21 +10,27 @@
  *   Gabor Szarnyas - initial API and implementation
  *******************************************************************************/
 
-package hu.bme.mit.trainbenchmark.ttc.generator.emf;
+package hu.bme.mit.trainbenchmark.ttc.benchmark.i3ql.java.java;
 
-import hu.bme.mit.trainbenchmark.ttc.generator.Generator;
-
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import hu.bme.mit.trainbenchmark.ttc.benchmark.config.BenchmarkConfig;
+import hu.bme.mit.trainbenchmark.ttc.benchmark.config.ChangeSet;
 
 import org.apache.commons.cli.ParseException;
 
-public class EMFGeneratorMain {
+public class SigmaBenchmarkConfig extends BenchmarkConfig {
 
-	public static void main(final String[] args) throws ParseException, FileNotFoundException, IOException {
-		final Generator generator = new EMFGenerator(args);
-		generator.generateModels();
-		System.out.println("sasdfasd");
+	public SigmaBenchmarkConfig(final String[] args) throws ParseException {
+		super(args);
+	}
+
+	public SigmaBenchmarkConfig(final int size, final int runs, final String query, final int iterationCount, final ChangeSet changeSet,
+			final long transformationConstant) {
+		super(size, runs, query, iterationCount, changeSet, transformationConstant);
+	}
+
+	@Override
+	public String getTool() {
+		return "Sigma";
 	}
 
 }

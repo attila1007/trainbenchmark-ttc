@@ -32,7 +32,7 @@ public abstract class TrainBenchmarkTest {
 		testTransformation(QueryConstants.POSLENGTH, 43, 42);
 	}
 
-	@Test
+	/*@Test
 	public void routeSensor() throws IOException {
 		testTransformation(QueryConstants.ROUTESENSOR, 7, 6);
 	}
@@ -50,7 +50,7 @@ public abstract class TrainBenchmarkTest {
 	@Test
 	public void switchSet() throws IOException {
 		testTransformation(QueryConstants.SWITCHSET, 3, 2);
-	}
+	}*/
 
 	protected abstract AbstractBenchmarkLogic getBenchmarkLogic(BenchmarkConfig bc);
 

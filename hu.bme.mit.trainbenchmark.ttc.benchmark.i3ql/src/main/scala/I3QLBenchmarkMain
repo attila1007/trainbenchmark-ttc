@@ -1,0 +1,32 @@
+/*i3ql imports*/
+import idb.SetTable
+import idb.syntax.iql._
+
+import scala.Predef.println
+
+object I3QLBenchmarkMain extends Schema{
+
+  val table = SetTable.empty[Int]
+  val trackElements = SetTable.empty[TrackElementTuple]
+
+  def initTrackElements(): Unit = {
+
+    trackElements += TrackElement(1,1)
+    trackElements += TrackElement(2,-1)
+    trackElements += TrackElement(3,2)
+    trackElements += TrackElement(4,3)
+    trackElements += TrackElement(5,3)
+    trackElements += TrackElement(6,-1)
+  }
+
+  val q1 = SELECT (*) FROM trackElements
+  val result = q1.asMaterialized
+  def main (args:Array[String]){
+    println("asdf")
+
+    val result = q1.asMaterialized
+    initTrackElements()
+    result.foreach(println(_))
+
+  }
+}
