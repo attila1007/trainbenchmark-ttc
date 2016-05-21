@@ -5,7 +5,7 @@ package hu.bme.mit.trainbenchmark.ttc.benchmark.i3ql.schema
   */
 trait InfixOps extends SegmentInfixOps with SemaphoreInfixOps with TrackElementInfixOps
                                        with SwitchInfixOps with ConnectsToInfixOps with SensorInfixOps
-                                       with SwitchPositionInfixOps with RouteInfixOps with SwitchSetMatch
-                                       with RouteSensorMatch {
+                                       with SwitchPositionInfixOps with RouteInfixOps with SwitchSetMatchInfixOps
+                                       with RouteSensorMatchInfixOps {
 
 }

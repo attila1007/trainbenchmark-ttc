@@ -94,16 +94,22 @@
         </dependency-->
 
         <dependency>
+            <groupId>EPFL</groupId>
+            <artifactId>lms_2.11</artifactId>
+            <version>latest.integration</version>
+        </dependency>
+
+        <dependency>
             <groupId>de.tud.cs.st</groupId>
-            <artifactId>idb-syntax-iql_2.10</artifactId>
+            <artifactId>idb-syntax-iql_2.11</artifactId>
             <version>0.0.1</version>
         </dependency>
 
-        <!--dependency>
+        <dependency>
             <groupId>de.tud.cs.st</groupId>
-            <artifactId>idb-runtime_2.10</artifactId>
+            <artifactId>idb-runtime_2.11</artifactId>
             <version>0.0.1</version>
-        </dependency-->
+        </dependency>
 
 
         <!-- TrainBenchmark -->

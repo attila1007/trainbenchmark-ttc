@@ -1,6 +1,8 @@
 package hu.bme.mit.trainbenchmark.ttc.benchmark.i3ql
 
+import hu.bme.mit.trainbenchmark.ttc.benchmark.config.BenchmarkConfig
 import hu.bme.mit.trainbenchmark.ttc.benchmark.i3ql.schema._
+import hu.bme.mit.trainbenchmark.ttc.benchmark.scenarios.AbstractBenchmarkLogic
 import idb.SetTable
 import java.util.Comparator
 import scala.io.Source
@@ -11,19 +13,21 @@ import hu.bme.mit.trainbenchmark.ttc.benchmark.benchmarkcases.AbstractBenchmarkC
   * Created by Ati on 2016.04.01..
   */
 
+
 abstract class I3QLBenchmarkCase extends AbstractBenchmarkCase with InfixOps {
 
-  var fileEnd = ".csv";
+  var idx = 0
+  var fileEnd = ".csv"
   var commonfileName = "../models/railway-1-"//bc.getInstanceModelPath + "/railway-" + bc.getSize + "-"
 
-  val connectsTo =  SetTable.empty[ConnectsToTuple]
-  val routes = SetTable.empty[RouteTuple]
-  val segments = SetTable.empty[SegmentTuple]
-  val semaphores = SetTable.empty[SemaphoreTuple]
-  val sensors = SetTable.empty[SensorTuple]
-  val switches = SetTable.empty[SwitchTuple]
-  val switchPositions = SetTable.empty[SwitchPositionTuple]
-  val trackElements = SetTable.empty[TrackElementTuple]
+  val connectsTo =  SetTable.empty[ConnectsTo]
+  val routes = SetTable.empty[Route]
+  val segments = SetTable.empty[Segment]
+  val semaphores = SetTable.empty[Semaphore]
+  val sensors = SetTable.empty[Sensor]
+  val switches = SetTable.empty[Switch]
+  val switchPositions = SetTable.empty[SwitchPosition]
+  val trackElements = SetTable.empty[TrackElement]
 
   override protected def registerComparator(): Unit = {
    comparator = I3QLBenchmarkComparator
@@ -31,31 +35,40 @@ abstract class I3QLBenchmarkCase extends AbstractBenchmarkCase with InfixOps {
 
   object I3QLBenchmarkComparator extends Comparator[Object]{
     def compare(o1: AnyRef, o2: AnyRef): Int = (o1, o2) match {
-      /* case (p1: Product, p2: Product) =>
-         if (p1.productArity != p2.productArity)
-           p1.productArity - p2.productArity
-         else {
-           ((p1.productIterator zip p2.productIterator) collect {
-             case (x: RailwayElement, y: RailwayElement) => x.getId - y.getId
-           }).sum
-         }*/
-      case (x: SegmentTuple, y: SegmentTuple) => x._1 - y._1
-      case (x: ConnectsToTuple, y: ConnectsToTuple) => {
-        if (x._1 == y._1 ) { x._2 - y._2}
-        else {x._1 - y._1}
+      case (x: Segment, y: Segment) => x.id - y.id
+      case (x: ConnectsTo, y: ConnectsTo) => {
+        if (x.fromId == y.fromId ) { x.toId - y.toId}
+        else {x.fromId - y.fromId}
       }
-      case (x: RouteTuple, y: RouteTuple) => x._1 - y._1
-      case (x: SemaphoreTuple, y: SemaphoreTuple) => x._1 - y._1
-      case (x: SensorTuple, y: SensorTuple) => x._1 - y._1
-      case (x: SwitchTuple, y: SwitchTuple) => x._1 - y._1
-      case (x: SwitchPositionTuple, y: SwitchPositionTuple) => x._1 - y._1
-      case (x: TrackElementTuple, y: TrackElementTuple) => x._1 - y._1
+      case (x: Route, y: Route) => x.id - y.id
+      case (x: Semaphore, y: Semaphore) => x.id - y.id
+      case (x: Sensor, y: Sensor) => x.id - y.id
+      case (x: Switch, y: Switch) => x.id - y.id
+      case (x: SwitchPosition, y: SwitchPosition) => x.id - y.id
+      case (x: TrackElement, y: TrackElement) => x.id - y.id
+      case (x: SwitchSetMatch, y: SwitchSetMatch) =>  {
+        if (x.switchId == y.switchId ) {
+          if (x.switchPositionId == y.switchPositionId) {
+            x.routeId - y.routeId
+          } else {
+            x.switchPositionId - y.switchPositionId
+          }
+        }
+        else {x.switchId - y.switchId}
+      }
+      case (x: RouteSensorMatch, y: RouteSensorMatch) =>  {
+        if (x.sensorId == y.sensorId ) {
+            x.routeId - y.routeId
+        }
+        else {x.sensorId - y.sensorId}
+      }
       case _ => sys.error(s"Unknown types to compare o1=`$o1` o2=`$o2`")
     }
   }
 
   def readConnectsTo(): Unit = {
     var filename = commonfileName + "connectsTo" + fileEnd
+    println("reading " + filename)
     for(line <- Source.fromFile(filename).getLines()){
       val values = line.split(";")
       connectsTo += ConnectsTo(java.lang.Integer.parseInt(values(0)),java.lang.Integer.parseInt(values(1)))
@@ -64,6 +77,7 @@ abstract class I3QLBenchmarkCase extends AbstractBenchmarkCase with InfixOps {
 
   def readRoute(): Unit = {
     var filename = commonfileName + "routes" + fileEnd
+    println("reading " + filename)
     for(line <- Source.fromFile(filename).getLines()){
       val values = line.split(";")
       routes += Route(java.lang.Integer.parseInt(values(0)),java.lang.Integer.parseInt(values(1)),java.lang.Integer.parseInt(values(2)))
@@ -72,14 +86,21 @@ abstract class I3QLBenchmarkCase extends AbstractBenchmarkCase with InfixOps {
 
   def readSegment(): Unit = {
     var filename = commonfileName + "segments" + fileEnd
+    println("reading " + filename)
+    var i = 0
     for(line <- Source.fromFile(filename).getLines()){
       val values = line.split(";")
-      segments += Segment(java.lang.Integer.parseInt(values(0)),java.lang.Integer.parseInt(values(1)))
+      var a = java.lang.Integer.parseInt(values(0))
+      var b = java.lang.Integer.parseInt(values(1))
+      //println(a + ", " + b)
+      segments += new Segment(a,b)
     }
+    segments.foreach(println(_))
   }
 
   def readSemaphore(): Unit = {
     var filename = commonfileName + "semaphores" + fileEnd
+    println("reading " + filename)
     for(line <- Source.fromFile(filename).getLines()){
       val values = line.split(";")
       semaphores += Semaphore(java.lang.Integer.parseInt(values(0)),java.lang.Integer.parseInt(values(1)))
@@ -88,6 +109,7 @@ abstract class I3QLBenchmarkCase extends AbstractBenchmarkCase with InfixOps {
 
   def readSensor(): Unit = {
     var filename = commonfileName + "sensors" + fileEnd
+    println("reading " + filename)
     for(line <- Source.fromFile(filename).getLines()){
       val values = line.split(";")
       sensors += Sensor(java.lang.Integer.parseInt(values(0)),java.lang.Integer.parseInt(values(1)))
@@ -96,6 +118,7 @@ abstract class I3QLBenchmarkCase extends AbstractBenchmarkCase with InfixOps {
 
   def readSwitch(): Unit = {
     var filename = commonfileName + "switches" + fileEnd
+    println("reading " + filename)
     for(line <- Source.fromFile(filename).getLines()){
       val values = line.split(";")
       switches += Switch(java.lang.Integer.parseInt(values(0)),java.lang.Integer.parseInt(values(1)))
@@ -104,6 +127,7 @@ abstract class I3QLBenchmarkCase extends AbstractBenchmarkCase with InfixOps {
 
   def readSwitchPosition(): Unit = {
     var filename = commonfileName + "switchPositions" + fileEnd
+    println("reading " + filename)
     for(line <- Source.fromFile(filename).getLines()){
       val values = line.split(";")
       switchPositions += SwitchPosition(java.lang.Integer.parseInt(values(0)),java.lang.Integer.parseInt(values(1)),java.lang.Integer.parseInt(values(2)),java.lang.Integer.parseInt(values(3)))
@@ -112,6 +136,7 @@ abstract class I3QLBenchmarkCase extends AbstractBenchmarkCase with InfixOps {
 
   def readTrackElement(): Unit = {
     var filename = commonfileName + "trackElements" + fileEnd
+    println("reading " + filename)
     for(line <- Source.fromFile(filename).getLines()){
       val values = line.split(";")
       trackElements += TrackElement(java.lang.Integer.parseInt(values(0)),java.lang.Integer.parseInt(values(1)))

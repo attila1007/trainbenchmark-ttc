@@ -16,19 +16,12 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="scala-sdk-2.10.4" level="application" />
     <orderEntry type="library" name="Maven: org.scala-lang.virtualized:scala-library:2.10.2" level="project" />
-    <orderEntry type="library" name="Maven: de.tud.cs.st:idb-syntax-iql_2.10:0.0.1" level="project" />
     <orderEntry type="library" name="Maven: org.scala-lang.virtualized:scala-compiler:2.10.2" level="project" />
     <orderEntry type="library" name="Maven: org.scala-lang.virtualized:scala-reflect:2.10.2" level="project" />
-    <orderEntry type="library" name="Maven: de.tud.cs.st:idb-runtime-compiler_2.10:0.0.1" level="project" />
-    <orderEntry type="library" name="Maven: de.tud.cs.st.idb:idb-schema-examples_2.10:0.0.1" level="project" />
-    <orderEntry type="library" name="Maven: de.tud.cs.st:idb-annotations_2.10:0.0.1" level="project" />
-    <orderEntry type="library" name="Maven: EPFL:lms_2.10:0.3-SNAPSHOT" level="project" />
     <orderEntry type="library" name="Maven: org.scalatest:scalatest_2.10:2.1.2" level="project" />
     <orderEntry type="library" name="Maven: org.scala-lang:scala-library:2.10.2" level="project" />
     <orderEntry type="library" name="Maven: org.scala-lang:scala-reflect:2.10.2" level="project" />
-    <orderEntry type="library" name="Maven: de.tud.cs.st:idb-runtime_2.10:0.0.1" level="project" />
     <orderEntry type="library" name="Maven: com.google.guava:guava:19.0" level="project" />
-    <orderEntry type="library" name="Maven: de.tud.cs.st:idb-intermediate-representation_2.10:0.0.1" level="project" />
     <orderEntry type="library" name="Maven: org.scala-lang.virtualized:jline:2.10.2" level="project" />
     <orderEntry type="library" name="Maven: org.fusesource.jansi:jansi:1.4" level="project" />
     <orderEntry type="module" module-name="hu.bme.mit.trainbenchmark.ttc.benchmark" />
@@ -36,9 +29,16 @@
     <orderEntry type="library" name="Maven: org.hamcrest:hamcrest-core:1.3" level="project" />
     <orderEntry type="library" name="Maven: commons-cli:commons-cli:1.2" level="project" />
     <orderEntry type="library" name="commons-cli:commons-cli:1.2" level="project" />
-    <orderEntry type="library" name="idb-syntax-iql_2.10-0.0.1" level="project" />
-    <orderEntry type="library" name="idb-runtime_2.10-0.0.1" level="project" />
     <orderEntry type="library" name="org.scala-tools:maven-scala-plugin:2.14.2" level="project" />
     <orderEntry type="library" name="org.eclipse.birt.runtime.3_7_1:org.eclipse.emf.ecore:2.7.0" level="project" />
+    <orderEntry type="library" name="idb-syntax-iql_2.11-0.0.1" level="project" />
+    <orderEntry type="library" name="idb-schema-examples_2.11-0.0.1" level="project" />
+    <orderEntry type="library" name="idb-annotations_2.11-0.0.1" level="project" />
+    <orderEntry type="library" name="idb-integration-test_2.11-0.0.1" level="project" />
+    <orderEntry type="library" name="idb-intermediate-representation_2.11-0.0.1" level="project" />
+    <orderEntry type="library" name="idb-runtime-compiler_2.11-0.0.1" level="project" />
+    <orderEntry type="library" name="idb-runtime_2.11-0.0.1" level="project" />
+    <orderEntry type="library" name="sae_2.11-0.1-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="lms_2.11-latest.integration" level="project" />
   </component>
 </module>

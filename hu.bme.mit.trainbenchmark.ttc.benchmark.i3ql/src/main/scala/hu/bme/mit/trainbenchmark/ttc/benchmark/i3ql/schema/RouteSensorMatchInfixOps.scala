@@ -11,6 +11,7 @@ import scala.language.implicitConversions
 trait RouteSensorMatchType {
   def routeId: Int
   def sensorId: Int
+  def sensorRouteId: Int
   def switchPositionId: Int
   def switchId: Int
 }
@@ -23,6 +24,7 @@ trait RouteSensorMatchTypeSchema {
   case class RouteSensorMatchTypeInfixOp(s: Rep[RouteSensorMatchType])  {
     def routeId (implicit pos: SourceContext): Rep[Int] = field[Int](s, "routeId")
     def sensorId (implicit pos: SourceContext): Rep[Int] = field[Int](s, "sensorId")
+    def sensorRouteId (implicit pos: SourceContext): Rep[Int] = field[Int](s, "sensorRouteId")
     def switchPositionId (implicit pos: SourceContext): Rep[Int] = field[Int](s, "switchPositionId")
     def switchId (implicit pos: SourceContext): Rep[Int] = field[Int](s, "switchId")
   }
@@ -30,7 +32,7 @@ trait RouteSensorMatchTypeSchema {
   implicit def routeSensorMatchTypeToInfixOp (s: Rep[RouteSensorMatchType]) = RouteSensorMatchTypeInfixOp (s)
 }
 
-case class RouteSensorMatch(routeId: Int, sensorId: Int, switchPositionId: Int, switchId: Int)
+case class RouteSensorMatch(routeId: Int, sensorId: Int, sensorRouteId: Int, switchPositionId: Int, switchId: Int)
   extends RouteSensorMatchType{}
 
 trait RouteSensorMatchInfixOps extends RouteSensorMatchTypeSchema {}

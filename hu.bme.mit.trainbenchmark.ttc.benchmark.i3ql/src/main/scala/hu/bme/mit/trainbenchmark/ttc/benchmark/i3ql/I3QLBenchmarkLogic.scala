@@ -1,6 +1,5 @@
 package hu.bme.mit.trainbenchmark.ttc.benchmark.i3ql
 
-import hu.bme.mit.trainbenchmark.ttc.benchmark.benchmarkcases.AbstractBenchmarkCase
 import hu.bme.mit.trainbenchmark.ttc.benchmark.config.BenchmarkConfig
 import hu.bme.mit.trainbenchmark.ttc.benchmark.i3ql.benchmarkcases._
 import hu.bme.mit.trainbenchmark.ttc.benchmark.scenarios.AbstractBenchmarkLogic
@@ -9,7 +8,7 @@ import hu.bme.mit.trainbenchmark.ttc.constants.QueryConstants
 /**
   * Created by Ati on 2016.04.01..
   */
-abstract class BaseBenchmarkLogic extends AbstractBenchmarkLogic{
+abstract class BaseBenchmarkLogic extends AbstractBenchmarkLogic {
   protected def _benchmarkConfig: BenchmarkConfig = benchmarkConfig
   protected def _benchmarkConfig_=(s: BenchmarkConfig) { benchmarkConfig = s }
 }
